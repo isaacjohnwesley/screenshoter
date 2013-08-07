@@ -1,4 +1,4 @@
 screenshoter
 ============
 
-The screenshot repo of Digfont, hosted in a separate server
+Opensource screenshot api written in Python for Digfont.
