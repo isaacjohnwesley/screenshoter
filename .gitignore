@@ -37,7 +37,7 @@ nosetests.xml
 # .pyc compiled files
 *.pyc
 
-#venv/
+venv/
 static/build/
 static/.webassets-cache/
 
@@ -45,5 +45,5 @@ static/.webassets-cache/
 
 ghostdriver.log
 
-#config.py
+config.py
 

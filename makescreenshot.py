@@ -51,7 +51,7 @@ def take_screenshot(url):
         webdriver.set_window_size(1280,800)
         imagedata = webdriver.get_screenshot_as_base64()
     finally:
-        webdriver.close()
+        #webdriver.close()
         webdriver.quit()
 
     return process_screenshot(imagedata)
