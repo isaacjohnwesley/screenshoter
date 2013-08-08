@@ -82,9 +82,10 @@ def upload_to_s3(upload_img):
         k.make_public()
     except boto.exception.s3responseerror, e:
         raise
+    finally:
+        url=k.generate_url(expires_in=0, query_auth=False)
 
-    finalurl="www.amazon.bucket.url-id-link.png"
-    return finalurl
+    return url
 
 
 api.add_resource(TakeScreenshot, '/takescreenshot')
