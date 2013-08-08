@@ -1,1 +1,1 @@
-web: run-program gunicorn makescreenshot:app
+web: gunicorn makescreenshot:app
