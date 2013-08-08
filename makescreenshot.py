@@ -44,6 +44,7 @@ class TakeScreenshot(restful.Resource):
 
 
 def take_screenshot(url):
+
     try:
         webdriver = selenium.webdriver.PhantomJS()
         webdriver.get(url)
@@ -56,6 +57,7 @@ def take_screenshot(url):
     return process_screenshot(imagedata)
 
 def process_screenshot(base64_img):
+
     basewidth = 220
     img = Image.open(BytesIO(base64.b64decode(base64_img)))
     wpercent = (basewidth/float(img.size[0]))
@@ -83,7 +85,7 @@ def upload_to_s3(upload_img):
     except boto.exception.s3responseerror, e:
         raise
     finally:
-        url=k.generate_url(expires_in=0, query_auth=False)
+        url=k.generate_url(expires_in=0 , query_auth=False)
 
     return url
 
