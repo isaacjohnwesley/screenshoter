@@ -5,3 +5,5 @@ gunicorn==0.17.2
 Selenium
 PIL==1.1.7
 Flask-RESTful
+boto
+six
