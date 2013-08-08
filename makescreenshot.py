@@ -73,8 +73,10 @@ def upload_to_s3(upload_img):
     try:
         bucket = conn.get_bucket(config["S3_BUCKET"])
 
-        lst = [random.choice(string.ascii_letters + string.digits) for n in xrange(12)]
-        uniquid = "".join(lst)
+        #generate an unique ID
+        random_char = [random.choice(string.ascii_letters + string.digits) for n in xrange(12)]
+        uniquid = "".join(random_char)
+
         k = bucket.new_key('screenshots/%s.png' % uniquid)
         k.set_contents_from_string(upload_img.getvalue(),headers={"Content-Type": "image/png"})
         k.make_public()
