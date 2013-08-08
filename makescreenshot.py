@@ -52,8 +52,8 @@ def take_screenshot(url):
     except Exception, e:
         raise
     finally:
-    webdriver.close()
-    webdriver.quit()
+        webdriver.close()
+        webdriver.quit()
 
     return process_screenshot(imagedata)
 
