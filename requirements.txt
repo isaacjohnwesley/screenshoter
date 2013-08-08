@@ -4,4 +4,4 @@ Werkzeug==0.8.3
 gunicorn==0.17.2
 Selenium
 PIL==1.1.7
-Flask-RESTful-0.2.4
+Flask-RESTful
