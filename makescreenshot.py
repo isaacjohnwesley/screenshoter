@@ -45,7 +45,7 @@ class TakeScreenshot(restful.Resource):
 
 def take_screenshot(url):
     try:
-        webdriver = selenium.webdriver.PhantomJS('vendor/phantomjs/bin/phantomjs')
+        webdriver = selenium.webdriver.PhantomJS()
         webdriver.get(url)
         webdriver.set_window_size(1280,800)
         imagedata = webdriver.get_screenshot_as_base64()
