@@ -43,7 +43,7 @@ class TakeScreenshot(restful.Resource):
 
 def take_screenshot(url):
     try:
-        webdriver = selenium.webdriver.PhantomJS()
+        webdriver = selenium.webdriver.PhantomJS('vendor/phantomjs/bin/phantomjs')
         webdriver.get(url)
         webdriver.set_window_size(1280,800)
         imagedata = webdriver.get_screenshot_as_base64()
@@ -69,7 +69,6 @@ def process_screenshot(base64_img):
     img.save(out_img,'PNG')
 
     return upload_to_s3(out_img)
-
 def upload_to_s3(upload_img):
     try:
         bucket = conn.get_bucket(config["S3_BUCKET"])
