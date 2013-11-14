@@ -69,6 +69,7 @@ def process_screenshot(base64_img):
 
     return upload_to_s3(out_img)
 def upload_to_s3(upload_img):
+    url = ''
     try:
         bucket = conn.get_bucket(config["S3_BUCKET"])
 
@@ -79,12 +80,11 @@ def upload_to_s3(upload_img):
         k = bucket.new_key('screenshots/%s.png' % uniquid)
         k.set_contents_from_string(upload_img.getvalue(),headers={"Content-Type": "image/png"})
         k.make_public()
+        url=k.generate_url(expires_in=0 , query_auth=False)
     except boto.exception.s3responseerror, e:
         raise
     finally:
-        url=k.generate_url(expires_in=0 , query_auth=False)
-
-    return url
+        return url
 
 
 api.add_resource(TakeScreenshot, '/takescreenshot')
