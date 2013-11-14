@@ -37,7 +37,7 @@ class TakeScreenshot(restful.Resource):
 
     def get(self):
         args = parser.parse_args()
-        finalink=take_screenshot('http://%s' %(args['url']))
+        finalink=take_screenshot('%s' %(args['url']))
         return finalink
 
 
