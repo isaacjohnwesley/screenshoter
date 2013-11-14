@@ -35,7 +35,7 @@ conn = boto.connect_s3(config["AWS_ACCESS_KEY_ID"],config["AWS_SECRET_ACCESS_KEY
 
 class TakeScreenshot(restful.Resource):
 
-    def get(self):
+    def post(self):
         args = parser.parse_args()
         finalink=take_screenshot(args['url'])
         return finalink
@@ -43,7 +43,7 @@ class TakeScreenshot(restful.Resource):
 
 def take_screenshot(url):
     try:
-        webdriver = selenium.webdriver.PhantomJS('vendor/phantomjs/bin/phantomjs')
+        webdriver = selenium.webdriver.PhantomJS()
         webdriver.get(url)
         webdriver.set_window_size(1280,800)
         imagedata = webdriver.get_screenshot_as_base64()
@@ -68,6 +68,7 @@ def process_screenshot(base64_img):
     img.save(out_img,'PNG')
 
     return upload_to_s3(out_img)
+
 def upload_to_s3(upload_img):
     url = ''
     try:
