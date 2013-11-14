@@ -34,10 +34,8 @@ except ImportError:
 conn = boto.connect_s3(config["AWS_ACCESS_KEY_ID"],config["AWS_SECRET_ACCESS_KEY"])
 
 class TakeScreenshot(restful.Resource):
-    def get(self):
-        return {'hello': 'get'}
 
-    def post(self):
+    def get(self):
         args = parser.parse_args()
         finalink=take_screenshot('http://%s' %(args['url']))
         return finalink
