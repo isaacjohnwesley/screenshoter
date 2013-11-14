@@ -37,7 +37,7 @@ class TakeScreenshot(restful.Resource):
 
     def get(self):
         args = parser.parse_args()
-        finalink=take_screenshot('%s' %(args['url']))
+        finalink=take_screenshot(args['url'])
         return finalink
 
 
@@ -47,11 +47,10 @@ def take_screenshot(url):
         webdriver.get(url)
         webdriver.set_window_size(1280,800)
         imagedata = webdriver.get_screenshot_as_base64()
-    except Exception, e:
-        raise
-    finally:
         webdriver.close()
         webdriver.quit()
+    except Exception, e:
+        raise
 
     return process_screenshot(imagedata)
 
